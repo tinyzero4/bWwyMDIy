@@ -22,8 +22,8 @@ vectorizer, model = load_model()
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
-    prediction = model.predict(vectorizer.transform([data]))[0]
-    return jsonify({'request': data, 'result': prediction})
+    prediction = model.predict(vectorizer.transform([data]))
+    return jsonify({'request': data, 'result': int(prediction[0])})
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=4000)
+    app.run(debug=True, host='0.0.0.0', port=8080)

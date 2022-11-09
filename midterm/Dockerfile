@@ -12,4 +12,4 @@ COPY conda-environment.yml .
 RUN conda env create -f conda-environment.yml
 
 EXPOSE 8080
-ENTRYPOINT ["conda", "run", "-n", "ml", "gunicorn", "--bind=0.0.0.0:8080", "predict:app"]
+CMD ["conda", "run", "-n", "ml", "gunicorn", "--bind=0.0.0.0:8080", "predict:app"]
